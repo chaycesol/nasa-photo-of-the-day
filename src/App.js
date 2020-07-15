@@ -13,12 +13,18 @@ function App() {
   
   //creating useState statement to have a place to set my data from the API into the DOM
   const [photoState, setPhotoState] = useState({})
-
+  
   //initiating useEffect to make a call to the API to get my data pulling in from constants. Helps to limit calls to API
   useEffect( () => {
     axios.get(`${BASE_URL}/?api_key=${API_KEY}`)
     .then(res => {
       setPhotoState(res.data)
+      if (res.data.media_type !== "image") {
+        axios.get(`${BASE_URL}/?api_key=${API_KEY}&date=2012-03-14`)
+      } else {
+        axios.get(`${BASE_URL}/?api_key=${API_KEY}&date=2012-03-14`)
+      }
+      
       console.log(res)
     })
     .catch(error => {
@@ -41,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Astronomy Photo of the Day! <span role="img" alt="space emojis">🚀🛰👽</span></h1> 
+      <h1>Astronomy Photo of the Day! <span role="img" aria-label="space emojis">🚀🛰👽</span></h1> 
       <p>
       <a href="https://apod.nasa.gov/apod/archivepix.html">Discover the cosmos! </a>
       Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer!
