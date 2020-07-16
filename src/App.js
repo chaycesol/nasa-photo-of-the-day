@@ -34,7 +34,7 @@ function App() {
       <a href="https://apod.nasa.gov/apod/archivepix.html">Discover the cosmos! </a>
       Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer!
       </p>
-     <ApodPhoto date title explanation photo={currentPhoto} />}
+     <ApodPhoto date media_type title explanation photo={currentPhoto} />}
     </div>
   );
 }
